@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2026 at 04:01 AM
+-- Generation Time: May 12, 2026 at 03:12 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,6 +53,14 @@ CREATE TABLE `audit_logs` (
   `IPAddress` varchar(45) DEFAULT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `audit_logs`
+--
+
+INSERT INTO `audit_logs` (`LogID`, `UserID`, `Action`, `TableName`, `RecordID`, `OldValue`, `NewValue`, `IPAddress`, `CreatedAt`) VALUES
+(1, 6, 'COLLECT_PAYMENT', 'payments', 1, NULL, '₱7,000.00', '127.0.0.1', '2026-05-12 01:11:41'),
+(2, 6, 'COLLECT_PAYMENT', 'payments', 2, NULL, '₱8,000.00', '127.0.0.1', '2026-05-12 01:12:08');
 
 -- --------------------------------------------------------
 
@@ -561,6 +569,34 @@ CREATE TABLE `courses` (
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`CourseID`, `CourseCode`, `CourseName`, `DepartmentID`, `CreatedBy`, `CreatedAt`) VALUES
+(1, 'ABPSY', 'Bachelor of Arts in Psychology', 1, 1, '2026-05-11 23:41:57'),
+(2, 'ABCOMM', 'Bachelor of Arts in Communication', 1, 1, '2026-05-11 23:41:57'),
+(3, 'BSBA', 'Bachelor of Science in Business Administration', 2, 1, '2026-05-11 23:41:57'),
+(4, 'BSENT', 'Bachelor of Science in Entrepreneurship', 2, 1, '2026-05-11 23:41:57'),
+(5, 'BSED', 'Bachelor of Secondary Education', 3, 1, '2026-05-11 23:41:57'),
+(6, 'BEED', 'Bachelor of Elementary Education', 3, 1, '2026-05-11 23:41:57'),
+(7, 'BSCE', 'Bachelor of Science in Civil Engineering', 4, 1, '2026-05-11 23:41:57'),
+(8, 'BSEE', 'Bachelor of Science in Electrical Engineering', 4, 1, '2026-05-11 23:41:57'),
+(9, 'BSIT', 'Bachelor of Science in Information Technology', 5, 1, '2026-05-11 23:41:57'),
+(10, 'BSCS', 'Bachelor of Science in Computer Science', 5, 1, '2026-05-11 23:41:57'),
+(11, 'BSN', 'Bachelor of Science in Nursing', 6, 1, '2026-05-11 23:41:57'),
+(12, 'BSMT', 'Bachelor of Science in Medical Technology', 6, 1, '2026-05-11 23:41:57'),
+(13, 'BSCrim', 'Bachelor of Science in Criminology', 7, 1, '2026-05-11 23:41:57'),
+(14, 'BSLM', 'Bachelor of Science in Legal Management', 7, 1, '2026-05-11 23:41:57'),
+(15, 'BSHM', 'Bachelor of Science in Hospitality Management', 8, 1, '2026-05-11 23:41:57'),
+(16, 'BSTRM', 'Bachelor of Science in Tourism Management', 8, 1, '2026-05-11 23:41:57'),
+(17, 'BSA', 'Bachelor of Science in Accountancy', 9, 1, '2026-05-11 23:41:57'),
+(18, 'BSMA', 'Bachelor of Science in Management Accounting', 9, 1, '2026-05-11 23:41:57'),
+(19, 'SHS-ABM', 'Senior High School - Accountancy, Business and Management', 10, 1, '2026-05-11 23:41:57'),
+(20, 'SHS-STEM', 'Senior High School - Science, Technology, Engineering and Mathematics', 10, 1, '2026-05-11 23:41:57'),
+(21, 'BED-ELEM', 'Elementary Education Program', 11, 1, '2026-05-11 23:41:57'),
+(22, 'BED-JHS', 'Junior High School Program', 11, 1, '2026-05-11 23:41:57');
+
 -- --------------------------------------------------------
 
 --
@@ -573,6 +609,23 @@ CREATE TABLE `departments` (
   `DepartmentAcronym` varchar(20) NOT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`DepartmentID`, `DepartmentName`, `DepartmentAcronym`, `CreatedAt`) VALUES
+(1, 'College of Arts and Sciences', 'CAS', '2026-05-11 22:59:39'),
+(2, 'College of Business Administration', 'CBA', '2026-05-11 22:59:39'),
+(3, 'College of Education', 'COED', '2026-05-11 22:59:39'),
+(4, 'College of Engineering', 'COE', '2026-05-11 22:59:39'),
+(5, 'College of Information Technology', 'CIT', '2026-05-11 22:59:39'),
+(6, 'College of Nursing', 'CON', '2026-05-11 22:59:39'),
+(7, 'College of Criminal Justice', 'CCJ', '2026-05-11 22:59:39'),
+(8, 'College of Hospitality Management', 'CHM', '2026-05-11 22:59:39'),
+(9, 'College of Accountancy', 'CA', '2026-05-11 22:59:39'),
+(10, 'Senior High School', 'SHS', '2026-05-11 22:59:39'),
+(11, 'Basic Education', 'BED', '2026-05-11 22:59:39');
 
 -- --------------------------------------------------------
 
@@ -933,6 +986,13 @@ CREATE TABLE `faculty` (
   `HireDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `faculty`
+--
+
+INSERT INTO `faculty` (`FacultyID`, `UserID`, `Position`, `Specialization`, `HireDate`) VALUES
+(1, 7, '', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -948,6 +1008,20 @@ CREATE TABLE `fees` (
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `fees`
+--
+
+INSERT INTO `fees` (`FeeID`, `FeeName`, `Amount`, `FeeType`, `IsActive`, `CreatedAt`) VALUES
+(1, 'Tuition Fee - Regular', 25000.00, 'Tuition', 1, '2026-05-12 00:58:27'),
+(2, 'Tuition Fee - SHS', 18000.00, 'Tuition', 1, '2026-05-12 00:58:27'),
+(3, 'Laboratory Fee', 3500.00, 'Lab', 1, '2026-05-12 00:58:27'),
+(4, 'Uniform Fee', 4500.00, 'Miscellaneous', 1, '2026-05-12 00:58:27'),
+(5, 'Miscellaneous Fee', 5200.00, 'Miscellaneous', 1, '2026-05-12 00:58:27'),
+(6, 'ID & Documents Fee', 800.00, 'Other', 1, '2026-05-12 00:58:27'),
+(7, 'Tuition Fee per Unit', 1500.00, 'Tuition', 1, '2026-05-12 00:58:27'),
+(8, 'Laboratory Fee per Hour', 300.00, 'Lab', 1, '2026-05-12 00:58:27');
+
 -- --------------------------------------------------------
 
 --
@@ -957,6 +1031,9 @@ CREATE TABLE `fees` (
 CREATE TABLE `grades` (
   `GradeID` int(11) NOT NULL,
   `EnrollmentID` int(11) NOT NULL,
+  `SubjectID` int(11) DEFAULT NULL,
+  `AcademicYearID` int(11) DEFAULT NULL,
+  `Semester` enum('1st','2nd','Summer') DEFAULT NULL,
   `Midterm` decimal(5,2) DEFAULT NULL,
   `Final` decimal(5,2) DEFAULT NULL,
   `FinalGrade` decimal(5,2) GENERATED ALWAYS AS (ifnull(`Midterm` * 0.4,0) + ifnull(`Final` * 0.6,0)) STORED,
@@ -981,6 +1058,14 @@ CREATE TABLE `payments` (
   `ReferenceNo` varchar(100) DEFAULT NULL,
   `Notes` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`PaymentID`, `StudentID`, `CashierID`, `AmountPaid`, `PaymentDate`, `PaymentMethod`, `ReferenceNo`, `Notes`) VALUES
+(1, 1, 6, 7000.00, '2026-05-12 01:11:41', 'Cash', '', ''),
+(2, 1, 6, 8000.00, '2026-05-12 01:12:08', 'Cash', '', '');
 
 -- --------------------------------------------------------
 
@@ -1104,6 +1189,13 @@ CREATE TABLE `students` (
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`StudentID`, `UserID`, `StudentNumber`, `DateOfBirth`, `Gender`, `Ethnicity`, `Religion`, `City`, `Region`, `ZipCode`, `Dialect`, `GuardianName`, `GuardianPhone`, `GuardianEmail`, `Status`, `CreatedAt`) VALUES
+(1, 3, '2026-0001', '2026-05-12', 'Male', 'Adasen', 'Aglipayan', 'sdfasasd', 'ARMM', '054154', 'Asi(Bantoanon)', 'fytydrsd', '05854888', 'Qdsaera@gdv', 'Active', '2026-05-12 00:17:45');
+
 -- --------------------------------------------------------
 
 --
@@ -1116,6 +1208,13 @@ CREATE TABLE `student_accounts` (
   `TotalBalance` decimal(12,2) DEFAULT 0.00,
   `LastUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_accounts`
+--
+
+INSERT INTO `student_accounts` (`AccountID`, `StudentID`, `TotalBalance`, `LastUpdated`) VALUES
+(1, 1, 35600.00, '2026-05-12 01:03:08');
 
 -- --------------------------------------------------------
 
@@ -1134,6 +1233,36 @@ CREATE TABLE `subjects` (
   `CreatedBy` int(11) DEFAULT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`SubjectID`, `SubjectCode`, `SubjectName`, `Units`, `LectureHours`, `LabHours`, `DepartmentID`, `CreatedBy`, `CreatedAt`) VALUES
+(50, 'PSY101', 'General Psychology', 3, 3, 0, 1, 1, '2026-05-12 00:40:54'),
+(51, 'COMM101', 'Communication Skills', 3, 3, 0, 1, 1, '2026-05-12 00:40:54'),
+(52, 'PHILO101', 'Introduction to Philosophy', 3, 3, 0, 1, 1, '2026-05-12 00:40:54'),
+(53, 'ACCT101', 'Financial Accounting', 3, 3, 0, 2, 1, '2026-05-12 00:40:54'),
+(54, 'MKTG101', 'Principles of Marketing', 3, 3, 0, 2, 1, '2026-05-12 00:40:54'),
+(55, 'MGMT101', 'Principles of Management', 3, 3, 0, 2, 1, '2026-05-12 00:40:54'),
+(56, 'EDUC101', 'Foundations of Education', 3, 3, 0, 3, 1, '2026-05-12 00:40:54'),
+(57, 'TEACH101', 'Principles of Teaching', 3, 3, 0, 3, 1, '2026-05-12 00:40:54'),
+(58, 'CALC101', 'Calculus 1', 4, 4, 0, 4, 1, '2026-05-12 00:40:54'),
+(59, 'PHYS101', 'Physics for Engineers', 4, 3, 3, 4, 1, '2026-05-12 00:40:54'),
+(60, 'IT101', 'Introduction to Computing', 3, 2, 3, 5, 1, '2026-05-12 00:40:54'),
+(61, 'PROG101', 'Programming 1', 3, 2, 3, 5, 1, '2026-05-12 00:40:54'),
+(62, 'DBMS101', 'Database Management System', 3, 2, 3, 5, 1, '2026-05-12 00:40:54'),
+(63, 'NURS101', 'Anatomy and Physiology', 4, 3, 3, 6, 1, '2026-05-12 00:40:54'),
+(64, 'NURS102', 'Fundamentals of Nursing', 3, 2, 3, 6, 1, '2026-05-12 00:40:54'),
+(65, 'CRIM101', 'Introduction to Criminology', 3, 3, 0, 7, 1, '2026-05-12 00:40:54'),
+(66, 'CRIM102', 'Criminal Law', 3, 3, 0, 7, 1, '2026-05-12 00:40:54'),
+(67, 'HM101', 'Introduction to Hospitality', 3, 3, 0, 8, 1, '2026-05-12 00:40:54'),
+(68, 'TOUR101', 'Tourism Management', 3, 3, 0, 8, 1, '2026-05-12 00:40:54'),
+(69, 'ACCT201', 'Intermediate Accounting', 3, 3, 0, 9, 1, '2026-05-12 00:40:54'),
+(70, 'TAX101', 'Income Taxation', 3, 3, 0, 9, 1, '2026-05-12 00:40:54'),
+(71, 'CORE101', 'Oral Communication', 3, 3, 0, 10, 1, '2026-05-12 00:40:54'),
+(72, 'MATH101', 'General Mathematics', 3, 3, 0, 10, 1, '2026-05-12 00:40:54'),
+(73, 'SCI101', 'General Science', 3, 3, 0, 11, 1, '2026-05-12 00:40:54');
 
 -- --------------------------------------------------------
 
@@ -1156,6 +1285,18 @@ CREATE TABLE `users` (
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserID`, `Username`, `PasswordHash`, `Role`, `FirstName`, `LastName`, `Email`, `Phone`, `DepartmentID`, `ProfilePicture`, `IsActive`, `CreatedAt`, `UpdatedAt`) VALUES
+(1, 'admin', '$2y$10$ZsyNbpswbfpU6FJMufA/t.nn/PYw6rQaRRBpbTftgAfhclYnk9P6W', 'admin', 'System', 'Administrator', 'admin@school.edu', NULL, NULL, NULL, 1, '2026-05-11 22:23:53', '2026-05-11 22:23:53'),
+(3, '2026-0001', '$2y$10$yK3JN5ISgykRVNUkXuz.2unfClLpkSc3Rqh14W1xTT4TN7Va9.TSm', 'student', 'ASDASD', 'aweraw', 'asfhdw@uhaf', '2054654', 11, NULL, 1, '2026-05-12 00:17:45', '2026-05-12 00:17:45'),
+(4, 'jobart', '$2y$10$xLGMUPbeFenrDPF19Qr0eOLjBr0Mt0s4pzOX.7NYVDyBqqAVAtnQS', 'dean', 'Jobart', 'Nacis', 'supsup123@jobart.gay', '025555455865', 5, NULL, 1, '2026-05-12 00:23:44', '2026-05-12 00:23:44'),
+(5, 'Olarte', '$2y$10$HZOOvl7kuMgWGz9JNwG8t.a1lQRONSpggQj8u5x3azixF2biADFG.', 'finance', 'Ivan', 'Olarte', 'Olarte@test.as', '024581565', NULL, NULL, 1, '2026-05-12 00:46:28', '2026-05-12 00:46:28'),
+(6, 'Yangyang', '$2y$10$1bH2V51RjgtyEaYdW7XyaOTGM5Er17WM6aDmKzBWczVdELeyL2N2a', 'cashier', 'Lester', 'Yangyang', 'yangyang@test.101', '05465418465', NULL, NULL, 1, '2026-05-12 01:06:43', '2026-05-12 01:06:43'),
+(7, 'Mismis', '$2y$10$0FB.UGBtOuX7VuJlEw6jWOKlicYN4s3P1Ko1Hb7I5Hy380J0V21aq', 'faculty', 'Louritch', 'Mismis', 'Mismis@test.101', '05055228554', NULL, NULL, 1, '2026-05-12 01:07:41', '2026-05-12 01:07:41');
 
 --
 -- Indexes for dumped tables
@@ -1231,7 +1372,8 @@ ALTER TABLE `fees`
 --
 ALTER TABLE `grades`
   ADD PRIMARY KEY (`GradeID`),
-  ADD KEY `EnrollmentID` (`EnrollmentID`);
+  ADD KEY `idx_grades_enrollment` (`EnrollmentID`),
+  ADD KEY `idx_grades_subject` (`SubjectID`);
 
 --
 -- Indexes for table `payments`
@@ -1297,7 +1439,7 @@ ALTER TABLE `academic_years`
 -- AUTO_INCREMENT for table `audit_logs`
 --
 ALTER TABLE `audit_logs`
-  MODIFY `LogID` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `LogID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `class_sections`
@@ -1309,13 +1451,13 @@ ALTER TABLE `class_sections`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `CourseID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CourseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `DepartmentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `DepartmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `enrollments`
@@ -1327,13 +1469,13 @@ ALTER TABLE `enrollments`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `FacultyID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `FacultyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `fees`
 --
 ALTER TABLE `fees`
-  MODIFY `FeeID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `FeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `grades`
@@ -1345,7 +1487,7 @@ ALTER TABLE `grades`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `scholarships`
@@ -1357,25 +1499,25 @@ ALTER TABLE `scholarships`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `StudentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `student_accounts`
 --
 ALTER TABLE `student_accounts`
-  MODIFY `AccountID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `AccountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `SubjectID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `SubjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
